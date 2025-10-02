@@ -1,0 +1,166 @@
+/* Header */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #002147;
+    color: white;
+    padding: 1rem;
+    position: relative;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+/* Navbar */
+.nav-bar ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Checkbox Hack */
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    right: 1rem;
+    top: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-bar ul {
+        flex-direction: column;
+        background: #002147;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        display: none;
+        padding: 1rem;
+    }
+
+    #menu-toggle:checked+.menu-icon+.nav-bar ul {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+
+/* Pre-Footer */
+.pre-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #0a1a3c;
+    color: white;
+    padding: 40px 20px;
+    gap: 30px;
+}
+
+.pre-footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.pre-footer h3 {
+    color: goldenrod;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.pre-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.pre-footer ul li {
+    margin-bottom: 6px;
+}
+
+.pre-footer ul li a {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+.pre-footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.pre-footer p {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 8px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: goldenrod;
+}
+
+@media (max-width: 900px) {
+    .pre-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pre-footer-col iframe {
+        max-width: 100%;
+    }
+}
+
+
+/* Footer */
+.site-footer {
+    background: #002147;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-bar ul {
+        display: none;
+        flex-direction: column;
+        background: #002147;
+        padding: 1rem;
+    }
+
+    #menu-toggle:checked~.nav-bar ul {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}

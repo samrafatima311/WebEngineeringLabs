@@ -1,0 +1,293 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+
+/* Modal box */
+#mymodal {
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  width: 70%;
+  max-width: 700px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1;
+}
+
+#mymodal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#mymodal button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #006b8f;
+  color: #fff;
+  cursor: pointer;
+}
+
+#mymodal button:hover {
+  background: #004d66;
+}
+
+
+/* Welcome box */
+.background-div {
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #96c9da;
+  box-sizing: border-box;
+}
+
+.background-div h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.background-div h4 {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .background-div h2 {
+    font-size: 1.5rem;
+  }
+
+  .background-div h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-div {
+    padding: 25px 15px;
+  }
+
+  .background-div h2 {
+    font-size: 1.2rem;
+  }
+
+  .background-div h4 {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Grid Content */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+
+/* Card container */
+/* Card container wrapper */
+.card-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Section title */
+.card-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0a1a3c;
+  margin-bottom: 0.5rem;
+}
+
+.card-header p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Grid for cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card style */
+.card {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card image */
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Card text */
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+  color: #002147;
+}
+
+.card p {
+  font-size: 15px;
+  color: #333;
+}
+
+
+/* Academics Section */
+.academics {
+  text-align: center;
+  margin: 40px auto;
+}
+
+.academics h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0a1a3c;
+}
+
+.academics p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.academics-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: rgb(165, 215, 255);
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tile i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.tile h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0a1a3c;
+}
+
+.tile:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 900px) {
+  .academics-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tile {
+    width: 80%;
+  }
+}
+
+
+
+/* Stats */
+.bahria-stats {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.bahria-stats h2 {
+  color: #002147;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.bahria-stats p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.stat-box {
+  max-width: 180px;
+}
+
+.stat-box i {
+  font-size: 40px;
+  color: goldenrod;
+  margin-bottom: 15px;
+}
+
+.stat-box strong {
+  font-size: 20px;
+  color: #002147;
+  display: block;
+}
+
+.stat-box span {
+  font-size: 14px;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+    align-items: center;
+  }
+}
