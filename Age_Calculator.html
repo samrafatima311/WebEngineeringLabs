@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f8fc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            color: #3992f0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            background-color: #55a1f2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0a7efa;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Age Checker</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="number" id="birthYear" placeholder="Enter your birth year">
+        <button onclick="checkAge()">Check</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkAge() {
+            const name = document.getElementById("name").value.trim();
+            const birthYear = parseInt(document.getElementById("birthYear").value);
+            const currentYear = new Date().getFullYear();
+            const resultDiv = document.getElementById("result");
+
+            // Clear previous result
+            resultDiv.textContent = "";
+
+            // Validate input
+            if (!name || isNaN(birthYear)) {
+                resultDiv.textContent = "Please enter a valid name and birth year.";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            if (birthYear > currentYear) {
+                resultDiv.textContent = "Birth year cannot be in the future.";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            const age = currentYear - birthYear;
+
+            if (age >= 18) {
+                resultDiv.textContent = `Hello ${name}, you are ${age} years old./n You are an Adult.`;
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = `Hello ${name}, you are ${age} years old. You are a Minor.`;
+                resultDiv.style.color = "orange";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
