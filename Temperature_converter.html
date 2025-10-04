@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Calculator</title>
+
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            background-color: #ccc;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 320px;
+            margin: 50px auto;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .options {
+            margin: 10px 10px;
+            text-align: left;
+        }
+
+        button {
+            background-color: #3395fd;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>🌡️ Temperature Converter</h2>
+
+        <input type="number" id="tempInput" placeholder="Enter temperature" step="any">
+
+        <div class="options">
+            <label><input type="radio" name="convertType" value="CtoF" checked> Celsius ➜ Fahrenheit</label><br>
+            <label><input type="radio" name="convertType" value="FtoC"> Fahrenheit ➜ Celsius</label>
+        </div>
+
+        <button onclick="convertTemperature()">Convert</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const tempInput = document.getElementById("tempInput").value;
+            const resultDiv = document.getElementById("result");
+            const type = document.querySelector('input[name="convertType"]:checked').value;
+
+            if (tempInput.trim() === "") {
+                resultDiv.textContent = "Please enter a temperature!";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            const temp = parseFloat(tempInput);
+            if (isNaN(temp)) {
+                resultDiv.textContent = "Invalid number!";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            let converted, message;
+            if (type === "CtoF") {
+                converted = (temp * 9 / 5) + 32;
+                message = `${temp.toFixed(1)}°C = ${converted.toFixed(2)}°F`;
+            } else {
+                converted = (temp - 32) * 5 / 9;
+                message = `${temp.toFixed(2)}°F = ${converted.toFixed(1)}°C`;
+            }
+
+            resultDiv.textContent = `${message}`;
+            resultDiv.style.color = "green";
+        }
+    </script>
+</body>
+
+</html>
