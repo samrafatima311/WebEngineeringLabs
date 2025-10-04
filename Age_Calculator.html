@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Checker</title>
+    <title>Age Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f8fc;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ccc;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 90vh;
         }
 
         .container {
@@ -23,7 +23,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
+            width: 50%;
         }
 
         input {
@@ -90,7 +90,7 @@
             const age = currentYear - birthYear;
 
             if (age >= 18) {
-                resultDiv.textContent = `Hello ${name}, you are ${age} years old./n You are an Adult.`;
+                resultDiv.textContent = `Hello ${name}, you are ${age} years old. You are an Adult.`;
                 resultDiv.style.color = "green";
             } else {
                 resultDiv.textContent = `Hello ${name}, you are ${age} years old. You are a Minor.`;
