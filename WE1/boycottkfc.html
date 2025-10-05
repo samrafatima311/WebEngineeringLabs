@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOYCOTT KFC</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Botstrap JavaScript [to makethe carousel move] -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* NAVBAR */
+        .custom-navbar {
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            color: #ea002a
+        }
+
+        .btn-delivery {
+            background-color: #1a1a1a !important;
+            border: 2px solid #EA002A !important;
+            color: #fff !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 6px;
+            padding: 6px 14px;
+        }
+
+        .btn-pickup {
+            background-color: #1a1a1a !important;
+            border: none;
+            color: #fff !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 6px;
+            padding: 6px 14px;
+        }
+
+        .btn-login {
+            background-color: #EA002A !important;
+            color: #fff !important;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 16px;
+        }
+
+        .navbar-toggler {
+            display: block !important;
+            border: none !important;
+            outline: none !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+        }
+
+        .navbar-toggler::before {
+            content: "\2630";
+            color: white;
+            font-size: 24px;
+        }
+
+        .bi-bucket-fill {
+            color: #EA002A;
+            font-size: 22px;
+            vertical-align: middle;
+        }
+
+
+        /* CAROUSEL */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 30px;
+            height: 30px;
+            background-color: #EA002A;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-size: 60% 60%;
+            filter: invert(0%) brightness(0%);
+            transition: filter 0.3s ease;
+        }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon,
+        .carousel-control-next:hover .carousel-control-next-icon {
+            filter: invert(100%) brightness(100%);
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: #b50122;
+        }
+
+
+        /* REORDER BUTTON */
+        .reorder-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .reorder-btn {
+            background-color: #EA002A !important;
+            color: white !important;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        /* EXPLORE MENU */
+        .carousel-container {
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .card-carousel {
+            display: flex;
+            gap: 20px;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .clip-card {
+            position: relative;
+            flex: 0 0 calc(20% - 10px);
+            height: 250px;
+            scroll-snap-align: start;
+            clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 100% 100%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+            background-color: #171717;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .clip-card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .clip-card .card-title {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            text-align: right;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .card-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card-carousel {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+
+
+        /* BEST SELLER */
+        .title {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title::after {
+            content: "";
+            color: white;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 4px;
+            background-color: #EA002A;
+        }
+
+        .scroll-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #636363;
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        .deal-card {
+            background-color: #111;
+            color: white;
+            border-radius: 12px;
+            padding: 0px, 15px, 15px, 15px;
+            flex: 0 0 250px;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .deal-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .deal-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .deal-title {
+            color: white;
+            margin-left: 15px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .price-tag {
+            position: absolute;
+            right: 15px;
+            top: 20%;
+            background: #EA002A;
+            color: #fff;
+            padding: 5px 12px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .red-bars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .red-bars div {
+            width: 10px;
+            height: 20px;
+            background-color: #EA002A;
+            border-radius: 2px;
+        }
+
+
+        /* TOP DEALS */
+        .deal-card p {
+            font-size: 13px;
+            padding: 15px;
+        }
+
+        .heart i {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: #EA002A;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 2;
+        }
+
+        .heart i:hover {
+            color: #b00024;
+        }
+
+
+        .deal-price {
+            font-size: 15px;
+            font-weight: bold;
+            padding-left: 15px;
+        }
+
+        .deal-btn {
+            margin: 15px 15px;
+            position: center;
+            background-color: #EA002A;
+            border: none;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .deal-btn:hover {
+            background-color: #b30022;
+        }
+
+
+        /* BIG CARDS */
+        .container-custom {
+            margin: 5% 10%;
+        }
+
+        .card.text-center {
+            background-color: #191919;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card.text-center img {
+            height: 160px;
+            width: 250px;
+            border-radius: 8px;
+        }
+
+
+        /* FOOTER */
+        .kfc-footer {
+            background-color: #444;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .kfc-footer .footer-heading {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .kfc-footer .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .kfc-footer .footer-link:hover {
+            color: #fff;
+        }
+
+        .kfc-footer .footer-divider {
+            border-color: #444;
+            margin: 1.5rem 0;
+        }
+
+        .kfc-footer .app-badge {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .kfc-footer .social-icons i {
+            font-size: 1.4rem;
+            color: #ccc;
+            transition: color 0.2s;
+        }
+
+        .kfc-footer .social-icons i:hover {
+            color: #fff;
+        }
+
+        .kfc-footer .footer-disclaimer {
+            text-align: center;
+            margin: 15px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(0, 0, 0); font-family: Arial, sans-serif;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-navbar px-4">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center gap-3">
+                <button class="navbar-toggler border-0" type="button">
+                    <span class="navbar-toggler-icon text-white"></span>
+                </button>
+
+                <a class="navbar-brand fw-bold fs-3" href="#">KFC</a>
+
+                <div class="d-flex align-items-center ms-3">
+                    <button class="btn btn-delivery me-2">
+                        <img src="delivery.png" height="20px" alt=""> DELIVERY
+                    </button>
+                    <button class="btn btn-pickup">
+                        <img src="pickup.png" height="20px" alt=""> PICKUP
+                    </button>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-bucket-fill" style="font-size: 1.6rem; color: #e4002b;"></i>
+
+                <button class="btn btn-login">LOGIN</button>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- MAIN CAROUSEL -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="herocar.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="herocar2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="herocar1.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- REORDER BUTTON -->
+    <div class="reorder-container">
+        <button class="reorder-btn">REORDER</button>
+    </div>
+
+
+    <!-- EXPLORE MENU -->
+    <div class="carousel-container position-relative">
+        <h2 class="title fw-bold mb-4">EXPLORE MENU</h2>
+        <div class="card-carousel d-flex overflow-auto">
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="td1.png" alt="Card 1">
+                </div>
+                <h5 class="card-title">Promotion</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="td2.png" alt="Card 2">
+                </div>
+                <h5 class="card-title">Everyday Value</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="bs3.png" alt="Card 3">
+                </div>
+                <h5 class="card-title">Ala-Carte</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="td3.png" alt="Card 4">
+                </div>
+                <h5 class="card-title">Signature Box</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="td4.png" alt="Card 5">
+                </div>
+                <h5 class="card-title">Sharing</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="bs2.png" alt="Card 6">
+                </div>
+                <h5 class="card-title">Snacks & Drinks</h5>
+            </div>
+
+            <div class="clip-card">
+                <div class="card-bg">
+                    <img src="bs1.png" alt="Card 7">
+                </div>
+                <h5 class="card-title">Midnight Deals</h5>
+            </div>
+        </div>
+
+        <button id="scrollLeft" class="carousel-control-prev" type="button">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button id="scrollRight" class="carousel-control-next" type="button">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+
+
+    <!-- BEST SELLER -->
+    <div class="container py-5">
+        <h2 class="title fw-bold mb-4">BEST SELLERS</h2>
+
+        <div class="scroll-container">
+
+            <div class="deal-card">
+                <div class="red-bars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="price-tag">Rs 310</span>
+                <h5 class="deal-title">Krunch Burger</h5>
+                <img src="bs1.png" alt="Krunch Burger">
+            </div>
+
+            <div class="deal-card">
+                <div class="red-bars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="price-tag">Rs 590</span>
+                <h5 class="deal-title">Krunch Combo</h5>
+                <img src="bs2.png" alt="Krunch Combo">
+            </div>
+
+            <div class="deal-card">
+                <div class="red-bars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="price-tag">Rs 620</span>
+                <h5 class="deal-title">Chicken & Chips</h5>
+                <img src="bs3.png" alt="Chicken & Chips">
+            </div>
+
+            <div class="deal-card">
+                <div class="red-bars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="price-tag">Rs 670</span>
+                <h5 class="deal-title">Hot Wings Bucket</h5>
+                <img src="bs4.png" alt="Hot Wings Bucket">
+            </div>
+
+            <div class="deal-card">
+                <div class="red-bars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="price-tag">Rs 850</span>
+                <h5 class="deal-title">Mighty Zinger</h5>
+                <img src="bs5.png" alt="Mighty Zinger">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TOP DEALS -->
+    <div class="container py-5">
+        <h2 class="title topdeal-title fw-bold mb-4">TOP DEALS</h2>
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="deal-card">
+                    <div class="red-bars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="heart"><i class="bi bi-heart"></i></span>
+                    <img src="td1.png" alt="Crispy Duo Box">
+                    <h5 class="deal-title">Crispy Duo Box</h5>
+                    <p>5 pcs Hot & Crispy Chicken + 1 Large fries + 2 Regular drinks</p>
+                    <div class="deal-price">Rs 1350</div>
+                    <button class="deal-btn">+ ADD TO BUCKET</button>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="deal-card">
+                    <div class="red-bars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="heart"><i class="bi bi-heart"></i></span>
+                    <img src="td2.png" alt="Xtreme Duo Box">
+                    <h5 class="deal-title">Xtreme Duo Box</h5>
+                    <p>2 Zingers + 2 pcs Hot & Crispy Chicken + Fries + Drinks</p>
+                    <div class="deal-price">Rs 1560</div>
+                    <button class="deal-btn">+ ADD TO BUCKET</button>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="deal-card">
+                    <div class="red-bars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="heart"><i class="bi bi-heart"></i></span>
+                    <img src="td3.png" alt="Value Bucket">
+                    <h5 class="deal-title">Value Bucket</h5>
+                    <p>9 pcs Crispy Fried Chicken, hand-breaded in-house</p>
+                    <div class="deal-price">Rs 2050</div>
+                    <button class="deal-btn">+ ADD TO BUCKET</button>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="deal-card">
+                    <div class="red-bars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="heart"><i class="bi bi-heart"></i></span>
+                    <img src="td4.png" alt="Family Festival">
+                    <h5 class="deal-title">Family Festival 3</h5>
+                    <p>4 Zingers + 4 pcs Hot & Crispy Chicken + 1 Large Pepsi</p>
+                    <div class="deal-price">Rs 2590</div>
+                    <button class="deal-btn">+ ADD TO BUCKET</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- BIG CARDS -->
+    <div class="card-section container-custom">
+        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+
+            <div class="col">
+                <div class="card">
+                    <img src="bigc1.jpg" class="card-img-top" alt="...">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <img src="bigc2.jpg" class="card-img-top">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <img src="bigc3.png" class="card-img-top">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card text-center p-3">
+                    <img src="bigc4.jpg" class="card-img-top mx-auto">
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            Adding 11 herbs and spices, Explore our menu and add items to your cart.
+                        </h6>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-login" type="button">EXPLORE MENU</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="kfc-footer text-white pt-5">
+        <div class="container">
+
+            <div class="row mb-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                    <a class="navbar-brand fw-bold fs-3" href="#">KFC</a>
+                    <div class="social-icons">
+                        <a href="#" class="footer-link me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="row mb-4">
+
+                <div class="col-md-3 mb-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Mitao Bhook</a></li>
+                        <li><a href="#" class="footer-link">Mitao Bhook - Scholarship</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Store Locator</a></li>
+                        <li><a href="#" class="footer-link">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <div class="footer-apps">
+                        <a href="#"><img src="appstore.png" alt="App Store" class="me-2 app-badge"></a>
+                        <a href="#"><img src="googleplay.png" alt="Google Play" class="app-badge"></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div>
+                    <small class="footer-disclaimer">© 2025 KFC. All Rights Reserved. By Samra Fatima</small>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const container = document.querySelector('.card-carousel');
+        document.getElementById('scrollLeft').addEventListener('click', () => {
+            container.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        document.getElementById('scrollRight').addEventListener('click', () => {
+            container.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
