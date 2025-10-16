@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      background-color: #f8f3e7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #e3effb;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 360px;
+    }
+
+    h2 {
+      color: #2b4c7e;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #2b4c7e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1d355e;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2b4c7e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎲 Guess the Number!</h2>
+    <button onclick="playGame()">Start Game</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function playGame() {
+      let randomNum = Math.floor(Math.random() * 10) + 1;
+      let attempts = 3;
+      let guessedCorrectly = false;
+
+      for (let i = 1; i <= attempts; i++) {
+        let userGuess = prompt(`Attempt ${i}/3: Guess a number between 1 and 10`);
+        if (userGuess === null) {
+          document.getElementById("result").textContent = "❌ Game cancelled.";
+          return;
+        }
+
+        userGuess = parseInt(userGuess);
+
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+          alert("⚠️ Please enter a number between 1 and 10!");
+          i--; // does not count invalid input
+          continue;
+        }
+
+        if (userGuess === randomNum) {
+          guessedCorrectly = true;
+          document.getElementById("result").textContent = `Correct! The number was ${randomNum}.`;
+          break;
+        } else if (userGuess > randomNum) {
+          alert("Too High!");
+        } else {
+          alert("Too Low!");
+        }
+      }
+
+      if (!guessedCorrectly) {
+        document.getElementById("result").textContent = `Out of attempts! The number was ${randomNum}.`;
+      }
+    }
+  </script>
+</body>
+</html>
