@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Grade Calculator</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8f3e7; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #e3effb;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+    }
+
+    h2 {
+      color: #2b4c7e;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #2b4c7e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1d355e;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2b4c7e;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #1d355e;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎓 Student Grade Calculator</h2>
+    <button onclick="calculateGrades()">Enter Marks</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateGrades() {
+      const subjects = ["English", "Math", "Science", "Computer", "History"];
+      const marks = [];
+      let total = 0;
+
+      for (let i = 0; i < subjects.length; i++) {
+        let score = prompt(`Enter marks for ${subjects[i]} (0–100):`);
+        if (score === null) {
+          document.getElementById("result").innerHTML = "❌ Operation cancelled.";
+          return;
+        }
+
+        score = parseFloat(score);
+
+        if (isNaN(score) || score < 0 || score > 100) {
+          alert("⚠️ Invalid input! Please enter a number between 0 and 100.");
+          i--; // redo this subject
+          continue;
+        }
+
+        marks.push(score);
+        total += score;
+      }
+
+      const percentage = (total / (subjects.length * 100)) * 100;
+      let grade = "";
+
+      if (percentage >= 80) grade = "A";
+      else if (percentage >= 60) grade = "B";
+      else grade = "Fail";
+
+      document.getElementById("result").innerHTML = `
+        ✅ <span class="highlight">Total Marks:</span> ${total}/500 <br>
+        📊 <span class="highlight">Percentage:</span> ${percentage.toFixed(2)}% <br>
+        🏅 <span class="highlight">Grade:</span> ${grade}
+      `;
+    }
+  </script>
+</body>
+</html>
