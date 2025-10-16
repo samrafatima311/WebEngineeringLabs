@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛒 Simple Shopping Cart</title>
+<title>Shopping Cart</title>
 
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: #f2f8fc;
+    background: #CCCCCC;
     color: #333;
     margin: 0;
     padding: 0;
@@ -37,7 +37,7 @@
   }
 
   .product button {
-    background-color: #007bff;
+    background-color: #55A1F2;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -46,7 +46,7 @@
   }
 
   .product button:hover {
-    background-color: #0056b3;
+    background-color: #0A7EFA;
   }
 
   table {
@@ -62,7 +62,7 @@
   }
 
   th {
-    background-color: #007bff;
+    background-color: #3992F0;
     color: white;
   }
 
@@ -89,7 +89,7 @@
 </head>
 
 <body>
-  <h1>🛍️ Online Store</h1>
+  <h1>SF Online Store</h1>
 
   <!-- Product List -->
   <section class="products">
@@ -105,7 +105,7 @@
       <button onclick="addToCart('Backpack', 25)">Add to Cart</button>
     </div>
     <div class="product">
-      <span>Pen</span>
+      <span>Gel Pen</span>
       <span>Price: $2</span>
       <button onclick="addToCart('Pen', 2)">Add to Cart</button>
     </div>
@@ -118,7 +118,7 @@
 
   <!-- Shopping Cart -->
   <section class="cart">
-    <h2>🛒 Your Cart</h2>
+    <h2>Your Cart</h2>
     <table id="cartTable">
       <thead>
         <tr>
