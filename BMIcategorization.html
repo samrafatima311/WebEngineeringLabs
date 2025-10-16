@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      background-color: #f8f3e7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #e3effb; 
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 350px;
+    }
+
+    h2 {
+      color: #2b4c7e;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      color: #1f355a;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #a5bfd9;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #2b4c7e;
+    }
+
+    button {
+      background-color: #2b4c7e;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1d355e;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2b4c7e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>BMI Calculator</h2>
+
+    <label>Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter your weight">
+
+    <label>Height (m):</label>
+    <input type="number" id="height" placeholder="Enter your height">
+
+    <button onclick="calculateBMI()">Calculate</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      var w = document.getElementById("weight").value;
+      var h = document.getElementById("height").value;
+      var result = document.getElementById("result");
+
+      if (w === "" || h === "" || w <= 0 || h <= 0) {
+        result.textContent = "⚠️ Please enter valid numbers!";
+        result.style.color = "red";
+        return;
+      }
+
+      var bmi = w / (h * h);
+      var category = "";
+
+      if (bmi < 18.5) category = "Underweight";
+      else if (bmi < 25) category = "Normal weight";
+      else if (bmi < 30) category = "Overweight";
+      else category = "Obese";
+
+      result.textContent = `Your BMI is ${bmi.toFixed(2)} (${category})`;
+      result.style.color = "#2b4c7e";
+    }
+  </script>
+</body>
+</html>
