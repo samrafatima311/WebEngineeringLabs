@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛒 Simple Shopping Cart</title>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f2f8fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2 {
+    text-align: center;
+    color: #004b8d;
+  }
+
+  .products, .cart {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .product button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .product button:hover {
+    background-color: #0056b3;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .remove-btn:hover {
+    background-color: #b52a38;
+  }
+
+  .total {
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+  <h1>🛍️ Online Store</h1>
+
+  <!-- Product List -->
+  <section class="products">
+    <h2>Products</h2>
+    <div class="product">
+      <span>Notebook</span>
+      <span>Price: $5</span>
+      <button onclick="addToCart('Notebook', 5)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <span>Backpack</span>
+      <span>Price: $25</span>
+      <button onclick="addToCart('Backpack', 25)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <span>Pen</span>
+      <span>Price: $2</span>
+      <button onclick="addToCart('Pen', 2)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <span>Headphones</span>
+      <span>Price: $40</span>
+      <button onclick="addToCart('Headphones', 40)">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- Shopping Cart -->
+  <section class="cart">
+    <h2>🛒 Your Cart</h2>
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price ($)</th>
+          <th>Quantity</th>
+          <th>Total ($)</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody">
+        <!-- Dynamic rows appear here -->
+      </tbody>
+    </table>
+    <div class="total" id="cartTotal">Total: $0.00</div>
+  </section>
+
+<script>
+
+// Array to hold cart items
+let cart = [];
+
+// Function to add item to cart
+function addToCart(itemName, price) {
+  try {
+    if (!itemName || isNaN(price) || price <= 0) {
+      throw "Invalid product details.";
+    }
+
+    // Check if item already exists
+    let existingItem = cart.find(item => item.name === itemName);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ name: itemName, price: price, quantity: 1 });
+    }
+
+    displayCart();
+  } catch (error) {
+    alert("Error adding to cart: " + error);
+  }
+}
+
+// Function to remove an item
+function removeItem(index) {
+  try {
+    if (index < 0 || index >= cart.length) throw "Invalid index.";
+    cart.splice(index, 1);
+    displayCart();
+  } catch (error) {
+    alert("Error removing item: " + error);
+  }
+}
+
+// Function to display cart
+function displayCart() {
+  const cartBody = document.getElementById("cartBody");
+  const cartTotal = document.getElementById("cartTotal");
+  cartBody.innerHTML = ""; // clear previous table rows
+  let total = 0;
+
+  // Loop through cart items
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const row = `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.price.toFixed(2)}</td>
+        <td>${item.quantity}</td>
+        <td>${itemTotal.toFixed(2)}</td>
+        <td><button class="remove-btn" onclick="removeItem(${index})">X</button></td>
+      </tr>`;
+    cartBody.innerHTML += row;
+  });
+
+  cartTotal.textContent = "Total: $" + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>
