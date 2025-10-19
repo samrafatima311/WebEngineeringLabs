@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Espresso",
+    "price": "$2.50",
+    "description": "A strong shot of coffee for a quick boost."
+  },
+  {
+    "name": "Cappuccino",
+    "price": "$3.50",
+    "description": "Espresso with steamed milk and a frothy top."
+  },
+  {
+    "name": "Latte",
+    "price": "$4.00",
+    "description": "Creamy blend of espresso and steamed milk."
+  },
+  {
+    "name": "Mocha",
+    "price": "$4.50",
+    "description": "Chocolatey coffee treat with whipped cream."
+  },
+  {
+    "name": "Iced Coffee",
+    "price": "$3.00",
+    "description": "Chilled coffee served over ice."
+  }
+]
