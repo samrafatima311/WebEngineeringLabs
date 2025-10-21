@@ -30,6 +30,50 @@ h1 {
   font-style: italic;
 }
 
+.matcha-audio {
+  text-align: center;
+  margin-top: 3rem;
+  background-color: #f5fff5;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.matcha-heading {
+  color: #567b45;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.matcha-subtext {
+  color: #6b7d57;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.audio-btn {
+  background-color: #a8c686;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s;
+}
+
+.audio-btn:hover {
+  background-color: #7da760;
+}
+
+#player {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
 #searchBox {
   width: 100%;
   padding: 0.8rem;
@@ -113,3 +157,4 @@ form button {
 form button:hover {
   background-color: #558b2f;
 }
+
