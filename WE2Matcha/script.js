@@ -76,3 +76,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadMenu();
 });
+
+// 🍵 Matcha Ambience Player Script
+let player;
+let isPlaying = false;
+
+// Load YouTube IFrame Player API dynamically
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.body.appendChild(tag);
+
+// Called when API is ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: '5qap5aO4i9A', // 🌿 Example: lo-fi cafe beats
+    playerVars: {
+      start: 60,   // Start time (in seconds)
+      end: 180,    // End time (in seconds)
+      autoplay: 0,
+      loop: 0,
+      controls: 0,
+      showinfo: 0,
+      rel: 0
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// Set default volume when player is ready
+function onPlayerReady() {
+  player.setVolume(10); // 10 = soft volume
+}
+
+// Stop player at the end time
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    const stopCheck = setInterval(() => {
+      if (player.getCurrentTime() >= 180) { // match end time
+        player.pauseVideo();
+        clearInterval(stopCheck);
+      }
+    }, 500);
+  }
+}
+
+// Button toggle logic
+document.getElementById("audioToggle").addEventListener("click", () => {
+  if (!isPlaying) {
+    player.playVideo();
+    player.unMute();
+    player.setVolume(10);
+    document.getElementById("audioToggle").textContent = "🔇 Pause Ambience";
+    isPlaying = true;
+  } else {
+    player.pauseVideo();
+    document.getElementById("audioToggle").textContent = "🎵 Play Ambience";
+    isPlaying = false;
+  }
+});
+
+
