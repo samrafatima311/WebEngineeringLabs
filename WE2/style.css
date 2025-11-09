@@ -1,0 +1,129 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f2f9f2;
+  background-image: linear-gradient(180deg, #f8fff8, #e6f4e3);
+  margin: 0;
+  padding: 0;
+  color: #355e3b;
+}
+
+.container {
+  max-width: 75%;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.matcha {
+  text-align: center;
+  margin: 1rem;
+  background-color: #f5fff5;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.matcha-heading {
+  color: #567b45;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.matcha-subtext {
+  color: #6b7d57;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+#searchBox {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #a5d6a7;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+#searchBox:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 8px rgba(102, 187, 106, 0.4);
+}
+
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.menu-item {
+  background-color: #f6fff6;
+  border-left: 6px solid #66bb6a;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s;
+}
+
+.menu-item:hover {
+  transform: scale(1.02);
+}
+
+.menu-item img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #a5d6a7;
+}
+
+.menu-item h3 {
+  margin: 0;
+  color: #336633;
+}
+
+.menu-item p {
+  margin: 0.25rem 0;
+  color: #507850;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+form input,
+form textarea {
+  padding: 0.8rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  background: #f9fff9;
+}
+
+form button {
+  background-color: #66bb6a;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #558b2f;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍵 Dhoom Matcha Le</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <section class="matcha text-center">
+      <h2 class="matcha-heading">🍵 Dhoom Matcha Le</h2>
+      <p class="matcha-subtext">Where every sip brings calm and color 🌿</p>
+    </section>
+    <input type="text" id="searchBox" placeholder="Search your matcha... 🔍" />
+
+    <div id="menuItems" class="menu-list"></div>
+
+    <h2>Add New Drink 🍃</h2>
+    <form id="addForm">
+      <input type="text" id="newName" placeholder="Name" required />
+      <input type="text" id="newPrice" placeholder="Price" pattern="^\d+$" title="Enter a valid price (e.g. 500)" required />
+      <textarea id="newDescription" placeholder="Description" required></textarea>
+      <input type="text" id="newImage" placeholder="Image URL (optional)" />
+      <button type="submit">Add Drink ➕</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

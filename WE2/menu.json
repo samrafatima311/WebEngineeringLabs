@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Classic Matcha Latte",
+    "price": "450",
+    "description": "Smooth and creamy matcha latte made with premium Japanese green tea.",
+    "image": "https://www.siftandsimmer.com/wp-content/uploads/2024/04/IMG_1502-featured1.jpg"
+  },
+  {
+    "name": "Iced Matcha Frappe",
+    "price": "500",
+    "description": "A refreshing iced blend of matcha, milk, and sweetness to cool your day.",
+    "image": "https://cdn.loveandlemons.com/wp-content/uploads/2023/06/iced-matcha-latte.jpg"
+  },
+  {
+    "name": "Matcha Lemon Spark",
+    "price": "475",
+    "description": "A zesty fusion of lemon and matcha with a sparkling twist.",
+    "image": "https://takestwoeggs.com/wp-content/uploads/2021/07/Matcha-Lemonade-Matcha-Palmer-Takestwoeggs-sq.jpg"
+  },
+  {
+    "name": "Vanilla Matcha Cloud",
+    "price": "525",
+    "description": "Fluffy vanilla foam over warm matcha goodness — like drinking a cloud.",
+    "image": "https://www.siftandsimmer.com/wp-content/uploads/2024/04/IMG_1502-featured1.jpg"
+  },
+  {
+    "name": "Hojicha Harmony",
+    "price": "425",
+    "description": "Roasted green tea latte with a nutty, soothing aroma — the perfect comfort cup.",
+    "image": "https://matchaoishii.com/cdn/shop/articles/Hojicha_Latte_-_Matcha_Oishii_2000x.jpg?v=1656084354"
+  },
+  {
+    "name": "Matcha Tea",
+    "price": "325",
+    "description": "A warm cup of delicious Matcha Tea brewed freshly.",
+    "image": "https://thumbs.dreamstime.com/b/delicious-hot-matcha-latte-glass-cup-steaming-green-tea-beverage-fresh-healthy-drink-aesthetic-table-setting-filled-400316951.jpg"
+  }
+]
