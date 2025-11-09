@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("menu.json");
       const jsonItems = await response.json();
-      menuItems = [...jsonItems, ...localItems];
+      menuItems = [...jsonItems];
     } catch (err) {
       console.error("Failed to load menu.json:", err);
       menuItems = [...localItems];
@@ -71,4 +71,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   loadMenu();
+
 });
