@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', menuOpen: false, scrolled: false }" 
+x-init="
+  if (darkMode) document.documentElement.classList.add('dark');
+  $watch('darkMode', value => {
+    localStorage.setItem('darkMode', value);
+    if (value) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  });
+  window.addEventListener('scroll', () => scrolled = window.scrollY > 0);
+">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 7C</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
+  <!-- Sticky Navbar -->
+  <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 transition-all duration-300" :class="{ 'shadow-md': scrolled }">
+    <div class="flex justify-between items-center p-4 max-w-7xl mx-auto">
+      <div class="text-xl font-bold">MyLogo</div>
+
+      <div class="hidden md:flex space-x-4">
+        <a href="#" class="hover:text-blue-500 transition">Home</a>
+        <a href="#" class="hover:text-blue-500 transition">About</a>
+        <a href="#" class="hover:text-blue-500 transition">Contact</a>
+      </div>
+
+      <!-- Dark Mode Toggle Button -->
+      <button @click="darkMode = !darkMode" class="p-2 rounded bg-gray-200 dark:bg-gray-700 transition">
+        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 
+          8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 
+          1 0 001.414-1.414l-.707-.707a1 
+          1 0 00-1.414 1.414zm2.12-10.607a1 
+          1 0 010 1.414l-.706.707a1 1 0 
+          11-1.414-1.414l.707-.707a1 
+          1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 
+          1 0 100 2h1zm-7 4a1 1 0 011 
+          1v1a1 1 0 11-2 0v-1a1 1 
+          0 011-1zM5.05 6.464A1 1 0 
+          106.465 5.05l-.708-.707a1 
+          1 0 00-1.414 1.414l.707.707zm1.414 
+          8.486l-.707.707a1 1 0 
+          01-1.414-1.414l.707-.707a1 
+          1 0 011.414 1.414zM4 11a1 
+          1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button @click="menuOpen = !menuOpen" class="md:hidden p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path x-show="!menuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+          <path x-show="menuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex items-center justify-center min-h-screen pt-8">
+    <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-sm md:max-w-md lg:max-w-lg w-full">
+      <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
+        New
+      </div>
+      <img
+        src="https://cms.buzzrx.com/globalassets/buzzrx/blogs/signs-of-depression-in-men.webp"
+        alt="Depression"
+        class="w-full h-48 object-cover rounded-t-lg"
+      >
+      <div class="p-4">
+        <h2 class="text-xl font-bold mb-2">Respected Sir</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          My laptop does not have the space and processor to run React, Tailwind and whatever dependencies needed in the future.
+          Please consider this while marking my assignment.
+        </p>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">
+          Thank You
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

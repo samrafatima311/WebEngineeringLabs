@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter and Theme Switcher (No Babel)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body class="min-h-screen transition-colors duration-300 bg-gray-100" id="body">
+  <div id="root"></div>
+
+  <script>
+    const e = React.createElement;
+
+    // Counter Component
+    function Counter() {
+      const [count, setCount] = React.useState(0);
+
+      return e(
+        "div",
+        { className: "bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center mb-8" },
+        e("h2", { className: "text-xl font-bold mb-4" }, "Click Counter"),
+        e("div", { className: "text-4xl font-mono mb-6" }, count),
+        e(
+          "div",
+          { className: "flex justify-center space-x-4" },
+          e(
+            "button",
+            {
+              onClick: () => setCount(count + 1),
+              className:
+                "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-200",
+            },
+            "Increment"
+          ),
+          e(
+            "button",
+            {
+              onClick: () => setCount(0),
+              className:
+                "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200",
+            },
+            "Reset"
+          )
+        )
+      );
+    }
+
+    // Theme Switcher Component
+    function ThemeSwitcher() {
+      const [selectedTheme, setSelectedTheme] = React.useState("gray");
+      const themes = {
+        red: "bg-red-500",
+        green: "bg-green-500",
+        blue: "bg-blue-500",
+        gray: "bg-gray-500",
+      };
+
+      const handleThemeChange = (theme) => {
+        setSelectedTheme(theme);
+        document.getElementById("body").className = `min-h-screen transition-colors duration-300 ${themes[theme]}`;
+      };
+
+      const buttons = Object.keys(themes).map((theme) =>
+        e(
+          "button",
+          {
+            key: theme,
+            onClick: () => handleThemeChange(theme),
+            className:
+              "capitalize px-4 py-2 rounded transition hover:opacity-80 " +
+              (selectedTheme === theme
+                ? `ring-4 ring-offset-2 bg-${theme}-600 text-white`
+                : `bg-${theme}-500 text-white`),
+          },
+          theme
+        )
+      );
+
+      return e(
+        "div",
+        { className: "bg-white rounded-lg shadow-lg p-6 max-w-md w-full text-center" },
+        e("h2", { className: "text-xl font-bold mb-4" }, "Color Theme Switcher"),
+        e("p", { className: "mb-6" }, "Click a button to change the background color:"),
+        e("div", { className: "flex justify-center space-x-4 flex-wrap" }, buttons)
+      );
+    }
+
+    // App Component
+    function App() {
+      return e(
+        "div",
+        { className: "flex flex-col items-center justify-center min-h-screen py-8" },
+        e(Counter),
+        e(ThemeSwitcher)
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(e(App));
+  </script>
+</body>
+</html>
