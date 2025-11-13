@@ -32,7 +32,7 @@ function Login() {
 
   if (isLoggedIn) {
     return React.createElement('div', { className: 'login-container' },
-      React.createElement('h2', null, 'Welcome, Admin!'),
+      React.createElement('h2', null, 'Welcome, Samra!'),
       React.createElement('button', { onClick: handleLogout, className: 'login-button' }, 'Logout')
     );
   }
@@ -67,3 +67,4 @@ function Login() {
 }
 
 ReactDOM.render(React.createElement(Login), document.getElementById('root'));
+
